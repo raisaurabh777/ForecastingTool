@@ -44,14 +44,11 @@
                     datatype: 'json',
                     data: '{selDate:' + JSON.stringify(selectedDate) + '}',
                     success: function (data) {
-                        if (data.includes("{\"d\":null}")) {
-                            data = data.substring(0, str.length - 10);
-                        }
                         if ($.fn.DataTable.isDataTable("#attendanceTable")) {
                             $('#attendanceTable').DataTable().clear().destroy();
                         }
                         table = $('#attendanceTable').dataTable({
-                            "data": data,
+                            "data": data.d,
                             "columns": [
                                 { 'data': 'ResourceId' },
                                 { 'data': 'ResourceName' },
@@ -71,15 +68,11 @@
                     datatype: 'json',
                     data: '{selDate:' + JSON.stringify(selectedDate) + '}',
                     success: function (data) {
-                        if (data.includes("{\"d\":null}"))
-                        {
-                            data = data.substring(0, str.length - 10);
-                        }
                         if ($.fn.DataTable.isDataTable("#attendanceTable")) {
                             $('#attendanceTable').DataTable().clear().destroy();
                         }
                         table = $('#attendanceTable').dataTable({
-                            "data": data,
+                            "data": data.d,
                             "columns": [
                                 { 'data': 'ResourceId' },
                                 { 'data': 'ResourceName' },

@@ -7,6 +7,11 @@ namespace ForecastTool.Models
 {
     public class AttendanceRecord
     {
+        protected internal AttendanceRecord()
+        {
+
+        }
+
         public int ResourceId { get; set; }
         public string ResourceName { get; set; }
         public int AvailableHours { get; set; }

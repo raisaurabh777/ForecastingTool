@@ -24,7 +24,8 @@ namespace ForecastTool
     {
 
         [WebMethod]
-        public void GetAttendanceForDate(DateModel selDate)
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public List<AttendanceRecord> GetAttendanceForDate(DateModel selDate)
         {
             try
             {
@@ -50,15 +51,7 @@ namespace ForecastTool
                         attendanceRecords.Add(record);
                     }
 
-                    JavaScriptSerializer js = new JavaScriptSerializer();
-                    var jsonResonse = js.Serialize(attendanceRecords);
-
-                    Context.Response.Clear();
-                    Context.Response.ContentType = "application/json";
-                    Context.Response.AddHeader("content-length", jsonResonse.Length.ToString());
-                    Context.Response.Flush();
-
-                    Context.Response.Write(jsonResonse);
+                    return attendanceRecords;
                 }
             }
             catch (Exception ex)
@@ -69,7 +62,8 @@ namespace ForecastTool
         }
 
         [WebMethod]
-        public void GetFutureAttendance(DateModel selDate)
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public List<AttendanceRecord> GetFutureAttendance(DateModel selDate)
         {
             try
             {
@@ -95,15 +89,7 @@ namespace ForecastTool
                         attendanceRecords.Add(record);
                     }
 
-                    JavaScriptSerializer js = new JavaScriptSerializer();
-                    var jsonResonse = js.Serialize(attendanceRecords);
-
-                    Context.Response.Clear();
-                    Context.Response.ContentType = "application/json";
-                    Context.Response.AddHeader("content-length", jsonResonse.Length.ToString());
-                    Context.Response.Flush();
-
-                    Context.Response.Write(jsonResonse);
+                    return attendanceRecords;
                 }
             }
             catch (Exception ex)
