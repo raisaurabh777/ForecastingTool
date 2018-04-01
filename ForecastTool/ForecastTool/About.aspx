@@ -44,6 +44,9 @@
                     datatype: 'json',
                     data: '{selDate:' + JSON.stringify(selectedDate) + '}',
                     success: function (data) {
+                        if (data.includes("{\"d\":null}")) {
+                            data = data.substring(0, str.length - 10);
+                        }
                         if ($.fn.DataTable.isDataTable("#attendanceTable")) {
                             $('#attendanceTable').DataTable().clear().destroy();
                         }
@@ -68,6 +71,10 @@
                     datatype: 'json',
                     data: '{selDate:' + JSON.stringify(selectedDate) + '}',
                     success: function (data) {
+                        if (data.includes("{\"d\":null}"))
+                        {
+                            data = data.substring(0, str.length - 10);
+                        }
                         if ($.fn.DataTable.isDataTable("#attendanceTable")) {
                             $('#attendanceTable').DataTable().clear().destroy();
                         }
